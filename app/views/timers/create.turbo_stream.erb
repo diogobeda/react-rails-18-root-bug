@@ -1,0 +1,3 @@
+<%= turbo_stream.append :timers do %>
+  <%= react_component("Timer", @timer.to_props) %>
+<% end %>

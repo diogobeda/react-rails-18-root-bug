@@ -1,0 +1,11 @@
+<h2>React 18 bug reproduction</h2>
+
+<%= turbo_frame_tag :timers, data: { controller: "mount-timers" } do %>
+  <% @timers.each do |timer| %>
+    <%= react_component("Timer", timer.to_props) %>
+  <% end %>
+<% end %>
+
+<%= form_with(url: timers_path, method: :post, data: { turbo: true, turbo_stream: true }) do |form| %>
+  <%= form.submit "Add timer" %>
+<% end %>
