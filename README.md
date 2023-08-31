@@ -1,24 +1,30 @@
-# README
+# Steps for reproducing
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Install ruby dependencies
+```
+bundle install
+```
 
-Things you may want to cover:
+2. Install js dependencies
+```
+yarn install
+```
 
-* Ruby version
+3. Setup sqlite db
+```
+rails db:create
+rails db:migrate
+```
 
-* System dependencies
+4. Run the app
+```
+rails s
+```
 
-* Configuration
+5. Click on the "Add timer" button
 
-* Database creation
+You should see the previously added timers reset their local state because the React root is being re-created and the following warning on the console:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+Warning: You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.
+```
